@@ -1,0 +1,65 @@
+
+Shared Memory Monitor 
+
+syvertsj
+
+-------------------------------------------------------------------------------    
+Makefile targets
+    it		-- build libraries and binaries
+    install	-- install built bin and lib to top level
+    depend	-- generate and append dependency list to Makefile
+    clean	-- remove generated bin, lib, and dependency lists
+
+-------------------------------------------------------------------------------    
+Release script options
+
+release.pl 		-- shows options
+release.pl -h	-- show help 
+release.pl -b	-- create binary distro
+release.pl -s	-- create source distro
+release.pl -c	-- clean workspace
+
+-------------------------------------------------------------------------------    
+Programs
+
+1. 'install_data' will read a data text file and install 
+	the content in shared memory.
+
+	Run as follows:
+
+	# install_data [data file]
+
+	Note: input data files are available under shared_memory_monitor/src/bin/install_data
+
+2. 'monitor_shm' will read from the shared memory structure
+	and send to stdout for a duration of 30 seconds by default
+	or any amount of seconds passed as a parameter.
+
+	Run as follows:
+
+	# monitor_shm [monitor time]
+
+3. 'install_and_monitor' uses pthreads and shared global data 
+	to mimic the 'install_data' and 'monitor_shm' programs.
+
+	Run as follows:
+
+	# install_and_monitor [filename] [monitor time]
+
+	Note: input data files are available under shared_memory_monitor/src/bin/install_and_monitor
+
+-------------------------------------------------------------------------------    
+Verification and management
+
+    view ipc availabilities for the system:
+    # ipcs
+
+    remove shared memory identifier:
+    # ipcrm -m [shmid]
+
+-------------------------------------------------------------------------------    
+    A recommendation is to use multiple terminals to view shared memory segments 
+    being created while 'install_data' is being run, or monitored via 'monitor_shm',
+    running 'ipcs', or tailing the log file "monitor_shm.log".
+
+-------------------------------------------------------------------------------    
