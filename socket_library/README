@@ -1,0 +1,15 @@
+TCP And Unix Domain Socket Library
+
+syvertsj
+
+--------------------------------------------------------------------------------
+build:
+    make all
+
+test with echo servers and clients:
+    in terminal one: ./[tcp|uds]_server
+    in terminal two: ./[tcp|uds]_client
+
+clean:
+    make clean
+--------------------------------------------------------------------------------
