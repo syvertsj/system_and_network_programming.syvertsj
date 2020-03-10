@@ -1,0 +1,56 @@
+Pub-Sub Fileserver Using TCp And Unix Domain Sockets
+
+syvertsj
+
+0. Build and Test
+
+   build;
+      # make install
+
+   local test tcp pub|sub:
+      # ./run.sh tcp 
+
+   local test unix pub|sub:
+      # ./run.sh unix
+
+Description:
+   The run script runs both the publisher and subscriber.
+   The publisher uses files under Articles. 
+   The subscriber will write the file to it's location.
+
+   The run script sets the ip but it may only work on macos or bsd.
+   It may be necessary to edit run.sh and set the $ip of the host.
+
+I. Makefile targets
+
+   it       -- build libraries and binaries
+   install  -- install built bin and lib to top level
+   depend   -- generate and append dependency list to Makefile
+   clean    -- remove generated bin, lib, and dependency lists
+
+
+II. Programs
+
+0. assigned port: 7406
+
+1. 'tcp_publisher' 
+
+	Run:
+	   # tcp_publisher
+
+2. 'tcp_subscriber' 
+
+	Run:
+	   # tcp_subscriber [article] [ip]
+
+3. 'unix_publisher' 
+
+	Run:
+	   # unix_publisher
+
+4. 'unix_subscriber'
+
+	Run:
+	   # unix_subscriber [article]
+
+
