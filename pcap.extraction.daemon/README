@@ -1,0 +1,37 @@
+
+--------------------------------------------------------------------------------
+description:
+    - uses socket library (see socket library project)
+    - daemon service to provide uds socket to access either live pcap stats
+        or canned data from file.
+
+--------------------------------------------------------------------------------
+build:
+    make all
+
+run:
+    in terminal one: ./[tcp|uds]_server
+    in terminal two: ./[tcp|uds]_client
+
+clean:
+    make clean
+
+test:
+    make test
+
+dependencies:
+    - libcppunit and libcppunit-dev packages for unit testing
+--------------------------------------------------------------------------------
+
+manual testing: use a separate terminal for the client
+    
+    1. terminal one: start daemon:
+        # service extractd start
+
+    2. terminal one: request uds socket name from daemon using 'netcat'
+        # $terminal -e "echo -n unix | $netcat localhost 2112" &
+
+    3. terminal two: run uds extractor client passing the uds location
+        # ./uds_extractor_client /tmp/req_unix" 
+--------------------------------------------------------------------------------
+
