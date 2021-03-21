@@ -10,7 +10,7 @@ all: libsock.so $(programs)
 
 libsock.so: socklib.c
 	@gcc -fPIC -c $<
-	@gcc -shared -Wl socklib.o -o libsock.so.1
+	@gcc -shared -W socklib.o -o libsock.so.1
 	@test -L libsock.so || ln -s libsock.so.1 libsock.so
 
 uds_server: uds_server.c socklib.c
