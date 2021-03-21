@@ -38,9 +38,9 @@ int main(int argc, char* argv[]) {
 
    int listenfd; /* listening socket */
 
-   /* set up service port */
+   /* set up service (file) */
    if ( SOCKET_ERROR == ( listenfd = setup_unix_server( (char *)"./unix_socket") ) ) {
-      perror("failure setting up service port");
+      perror("failure setting up service (file)");
       exit(errno); 
    }
 
@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
       /* accept connections */
       if ( 0 > ( connfd = accept(listenfd, (struct sockaddr *) &cliaddr, 
                   &clilen) ) ) {
-         perror("service port connection error");
+         perror("service connection error");
          exit(errno);
       }
       printf("\n%s: connection accepted", argv[0]);
